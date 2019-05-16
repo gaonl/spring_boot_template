@@ -19,6 +19,7 @@ public class UserDaoTests {
 	public void getById() {
 		User user = userDao.getById(1);
 		Assert.assertNotNull(user);
+		Assert.assertEquals("username not same!!",user.getName(),"gao");
 	}
 
 }
