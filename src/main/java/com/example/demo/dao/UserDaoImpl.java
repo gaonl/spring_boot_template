@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getByName(String name) {
-        String sql = "select id,name from t_user where name=:name;";
+        String sql = "select id,name,password,register_date_time from t_user where name=:name;";
         Map<String, Object> param = new HashMap<>();
         param.put("name", name);
 
