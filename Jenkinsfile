@@ -80,7 +80,7 @@ pipeline {
             echo "Test Report..............."
             junit '**/target/surefire-reports/*.xml'
             echo "Jcoco Report..............."
-            jacoco()
+            jacoco execPattern: 'target/jacoco.exec'
         }
     }
 }
