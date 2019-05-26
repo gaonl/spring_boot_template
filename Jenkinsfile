@@ -3,6 +3,11 @@ pipeline {
     * 用于指定任务在哪个代理节点上面运行
     **/
     agent any
+    
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
+    }
+
 
     /**
     * 用于设置环境变量，可以定义在stage或者pipeline部分
