@@ -9,14 +9,25 @@ import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 
+/**
+ * springboot启动类
+ */
 @SpringBootApplication
 public class DemoApplication {
 
+	/**
+	 * main 方法，用户启动springboot
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 
+	/**
+	 * 数据源
+	 * @return
+	 */
 	@Bean
 	@ConfigurationProperties(prefix = "spring.datasource")
 	DataSource dataSource(){

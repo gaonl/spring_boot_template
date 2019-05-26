@@ -19,16 +19,32 @@ public class RegisterController {
     @Qualifier("userDao")
     private UserDao userDao;
 
+    /**
+     * 注册页面
+     *
+     * @return 返回注册页面
+     */
     @RequestMapping(method = RequestMethod.GET)
     public String showRegisterForm() {
         return "register/register";
     }
 
-    @RequestMapping(path = "/success",method = RequestMethod.GET)
+    /**
+     * 注册成功
+     *
+     * @return 注册成功页面
+     */
+    @RequestMapping(path = "/success", method = RequestMethod.GET)
     public String registerSuccess() {
         return "register/success";
     }
 
+    /**
+     * 注册页面
+     *
+     * @param user 用户实体类
+     * @return 跳转到注册页面
+     */
     @RequestMapping(method = RequestMethod.POST)
     public String doRegister(User user) {
         user.setRegisterDateTime(System.currentTimeMillis());

@@ -44,6 +44,10 @@ public class User {
         this.registerDateTime = registerDateTime;
     }
 
+    /**
+     * 获取用户的注册时间
+     * @return 用户的注册时间
+     */
     public String getDisplayRegisterDateTime() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -52,28 +56,37 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         User user = (User) o;
 
-        if (!id.equals(user.id)) return false;
-        if (!name.equals(user.name)) return false;
+        if (!id.equals(user.id)) {
+            return false;
+        }
+        if (!name.equals(user.name)) {
+            return false;
+        }
 
         return true;
     }
 
     @Override
     public int hashCode() {
+        int INT_31 = 31;
         int result = id.hashCode();
-        result = 31 * result + name.hashCode();
+        result = INT_31 * result + name.hashCode();
         return result;
     }
 
-    private static final String toStringJsonFmt = "{\"id\":%s,\"name\":\"%s\"}";
+    private static final String JSON_FMT = "{\"id\":%s,\"name\":\"%s\"}";
 
     @Override
     public String toString() {
-        return String.format(toStringJsonFmt, String.valueOf(id), String.valueOf(name));
+        return String.format(JSON_FMT, String.valueOf(id), String.valueOf(name));
     }
 }

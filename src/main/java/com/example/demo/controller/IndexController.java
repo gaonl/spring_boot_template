@@ -17,7 +17,6 @@ public class IndexController {
     private DataSource dataSource;
 
     /**
-     *
      * @return 返回页面
      */
     @RequestMapping(method = RequestMethod.GET)
