@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
  * Created by gaonl on 2018/9/28.
  */
 public class User {
+
+    public static final int INT_31 = 31;
+
     private Integer id;
     private String name;
     private String password;
@@ -77,7 +80,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        int INT_31 = 31;
         int result = id.hashCode();
         result = INT_31 * result + name.hashCode();
         return result;

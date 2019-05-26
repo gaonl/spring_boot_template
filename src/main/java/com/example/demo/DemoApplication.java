@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 
@@ -15,22 +14,24 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class DemoApplication {
 
-	/**
-	 * main 方法，用户启动springboot
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    /**
+     * main 方法，用户启动springboot
+     *
+     * @param args 命令行参数
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
 
-	/**
-	 * 数据源
-	 * @return
-	 */
-	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource")
-	DataSource dataSource(){
-		return new DruidDataSource();
-	}
+    /**
+     * 数据源
+     *
+     * @return 返回配置的数据源
+     */
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    DataSource dataSource() {
+        return new DruidDataSource();
+    }
 }

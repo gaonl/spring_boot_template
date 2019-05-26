@@ -17,13 +17,13 @@
     <module name="TreeWalker">
         <!-- import检查-->
         <!-- 避免使用* -->
-        <module name="AvoidStarImport">
-            <property name="excludes" value="java.io,java.net,java.lang.Math"/>
+        <!--<module name="AvoidStarImport">-->
+            <!--<property name="excludes" value="java.io,java.net,java.lang.Math"/>-->
             <!-- 实例；import java.util.*;.-->
-            <property name="allowClassImports" value="false"/>
+            <!--<property name="allowClassImports" value="false"/>-->
             <!-- 实例 ；import static org.junit.Assert.*;-->
-            <property name="allowStaticMemberImports" value="true"/>
-        </module>
+            <!--<property name="allowStaticMemberImports" value="true"/>-->
+        <!--</module>-->
         <!-- 检查是否从非法的包中导入了类 -->
         <module name="IllegalImport"/>
         <!-- 检查是否导入了多余的包 -->
