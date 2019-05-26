@@ -67,10 +67,11 @@ pipeline {
     **/
     post {
         success {
-            echo "pipeline success!!"
+            echo "pipeline success..............."
         }
         always {
-            echo "always do!!"
+            echo "Test Report..............."
+            junit '**/target/surefire-reports/*.xml'
         }
     }
 }
