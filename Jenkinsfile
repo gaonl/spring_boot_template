@@ -3,9 +3,10 @@ pipeline {
     * 用于指定任务在哪个代理节点上面运行
     **/
     agent any
-    
+
     options {
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
+        //保留最近5次的构建
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
     }
 
 
@@ -15,7 +16,7 @@ pipeline {
     * GIT_BRANCH 为 Jenkins内置的环境变量
     **/
     environment {
-        MY_PROJECT_NAME = "spring boot test: ${GIT_BRANCH}"
+        MY_PROJECT_NAME = "spring boot test from git: /${GIT_BRANCH}"
     }
 
     /**
@@ -38,6 +39,7 @@ pipeline {
         stage('Source') {
             steps {
                 echo "从 ${MY_PROJECT_NAME} 检出源代码..............."
+                //git 'https://github.com/gaonl/spring_boot_template.git'
             }
         }
         stage('CheckStyle') {
@@ -77,6 +79,8 @@ pipeline {
         always {
             echo "Test Report..............."
             junit '**/target/surefire-reports/*.xml'
+            echo "Jcoco Report..............."
+            jacoco()
         }
     }
 }
