@@ -15,9 +15,13 @@ import javax.sql.DataSource;
 public class IndexController {
     @Autowired
     private DataSource dataSource;
+
+    /**
+     *
+     * @return 返回页面
+     */
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
-        System.out.println("++++++");
         return "index";
     }
 }

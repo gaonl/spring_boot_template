@@ -12,10 +12,11 @@ public class ApplicationControllerAdvice {
     /**
      * 当不管哪个controller抛出DuplicateDomainException异常时，调用这个方法
      * 不知道能不能带请求参数，算了，不试了
-     * @return
+     *
+     * @return 返回错误页面
      */
     @ExceptionHandler(DuplicateDomainException.class)
-    public String allThrowableHere(){
+    public String allThrowableHere() {
         return "error/500";
     }
 }
