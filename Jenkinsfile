@@ -35,16 +35,24 @@ pipeline {
                 echo "从 ${MY_PROJECT_NAME} 检出源代码..............."
             }
         }
+        stage('CheckStyle') {
+            steps {
+                echo "CheckStyle验证代码..............."
+                sh 'mvn validate'
+            }
+            post {
+                always {
+                    /**
+                    * checkstyle
+                    **/
+                    recordIssues enabledForFailure: true, referenceJobName: 'spring_boot_template_pipeline', sourceCodeEncoding: 'UTF-8', tools: [checkStyle(reportEncoding: 'UTF-8')]
+                }
+            }
+        }
         stage('Build') {
             steps {
                 echo "执行构建..............."
 				sh 'mvn clean package'
-            }
-        }
-        stage('Quality') {
-            steps {
-                echo "分析代码质量..............."
-                recordIssues enabledForFailure: true, referenceJobName: 'spring_boot_template_pipeline', sourceCodeEncoding: 'UTF-8', tools: [checkStyle(reportEncoding: 'UTF-8')]
             }
         }
         stage('Deploy') {
