@@ -126,12 +126,6 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <destFile>
-                                ${project.build.directory}/coverage-reports/jacoco.exec
-                            </destFile>
-                            <propertyName>surefireArgLine</propertyName>
-                        </configuration>
                     </execution>
                     <!--
                     在程序的verify阶段，执行report测试的程序。
@@ -146,10 +140,15 @@
                         </goals>
                         <configuration>
                             <dataFile>target/jacoco.exec</dataFile>
-                            <outputDirectory>target/jacoco</outputDirectory>
+                            <outputDirectory>target/jacoco-out</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <systemPropertyVariables>
+                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>
