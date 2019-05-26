@@ -32,24 +32,24 @@ pipeline {
         }
         stage('Source') {
             steps {
-                echo "从 ${MY_PROJECT_NAME} 检出源代码"
+                echo "从 ${MY_PROJECT_NAME} 检出源代码..............."
             }
         }
         stage('Build') {
             steps {
-                echo "执行构建"
+                echo "执行构建..............."
 				sh 'mvn clean package'
             }
         }
         stage('Quality') {
             steps {
-                echo "分析代码质量"
+                echo "分析代码质量..............."
                 recordIssues enabledForFailure: true, referenceJobName: 'spring_boot_template_pipeline', sourceCodeEncoding: 'UTF-8', tools: [checkStyle(reportEncoding: 'UTF-8')]
             }
         }
         stage('Deploy') {
             steps {
-                echo "部署应用"
+                echo "部署应用..............."
             }
         }
     }
