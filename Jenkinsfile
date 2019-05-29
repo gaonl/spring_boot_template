@@ -85,6 +85,8 @@ pipeline {
             echo "Jcoco Report..............."
             //jacoco是在字节码中插入锚点来判断代码的运行覆盖，所以需要在编译、测试后生成jacoco报告
             jacoco execPattern: 'target/jacoco.exec'
+            //jacoco分析字节码的，所以需要在编译、测试后生成findbugs报告
+            recordIssues(tools: [findBugs(pattern: '**/target/findbugs-out/*.xml', reportEncoding: 'UTF-8', useRankAsPriority: true)])
         }
     }
 }
