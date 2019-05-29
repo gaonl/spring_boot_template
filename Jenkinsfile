@@ -45,6 +45,8 @@ pipeline {
         stage('CheckStyle') {
             steps {
                 echo "CheckStyle验证代码..............."
+                //CheckStyle是针对源码进行分析的，所以可以放在编译之前
+				//sh 'mvn checkstyle:checkstyle'
                 sh 'mvn validate'
             }
             post {
@@ -78,8 +80,10 @@ pipeline {
         }
         always {
             echo "Test Report..............."
+            //junit插件需要junit测试报告文件，所以要放在测试之后
             junit '**/target/surefire-reports/*.xml'
             echo "Jcoco Report..............."
+            //jacoco是在字节码中插入锚点来判断代码的运行覆盖，所以需要在编译、测试后生成jacoco报告
             jacoco execPattern: 'target/jacoco.exec'
         }
     }
