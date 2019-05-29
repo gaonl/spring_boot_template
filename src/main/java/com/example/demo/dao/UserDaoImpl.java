@@ -52,10 +52,10 @@ public class UserDaoImpl implements UserDao {
         template.update(sql, new MapSqlParameterSource(param), keyHolder);
 
         Number number = keyHolder.getKey();
-        if (number == null) {
-            user.setId(null);
-        } else {
+        if (number != null) {
             user.setId(keyHolder.getKey().intValue());
+        } else {
+            user.setId(10000);
         }
         return user;
     }
