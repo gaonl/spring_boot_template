@@ -23,6 +23,8 @@ import java.util.Map;
 @Qualifier("userDao") //Qualifier=userDao
 public class UserDaoImpl implements UserDao {
 
+    public static final int DEFAULT_USER_ID = 1000;
+
     @Autowired(required = true)
     private NamedParameterJdbcTemplate template;
 
@@ -55,7 +57,7 @@ public class UserDaoImpl implements UserDao {
         if (number != null) {
             user.setId(number.intValue());
         } else {
-            user.setId(10000);
+            user.setId(DEFAULT_USER_ID);
         }
         return user;
     }
