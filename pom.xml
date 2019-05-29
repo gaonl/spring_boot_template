@@ -23,6 +23,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 如果不是在maven阶段中运行的（比如: maven clean validate）-->
+        <!-- 而是直接用 maven checkstyle:checkstyle 就需要制定下面参数 -->
+        <!-- 不然就默认使用sun_checks.xml来了 -->
+        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
     </properties>
 
     <dependencies>
@@ -77,7 +82,8 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->
+                    <!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -85,7 +91,8 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
+                    <!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 -->
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
