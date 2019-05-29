@@ -82,10 +82,16 @@ pipeline {
             echo "Test Report..............."
             //junit插件需要junit测试报告文件，所以要放在测试之后
             junit '**/target/surefire-reports/*.xml'
+
+
             echo "Jcoco Report..............."
             //jacoco是在字节码中插入锚点来判断代码的运行覆盖，所以需要在编译、测试后生成jacoco报告
             jacoco execPattern: 'target/jacoco.exec'
-            //jacoco分析字节码的，所以需要在编译、测试后生成findbugs报告
+
+            echo "Findbugs Report..............."
+            //Findbugs分析字节码的，所以需要在编译、测试后生成findbugs报告
+            //Note:This goal should be used as a Maven report. 默认的maven生命周期是report，现在手动调用
+            sh 'mvn findbugs:findbugs'
             recordIssues(tools: [findBugs(pattern: '**/target/findbugs-out/*.xml', reportEncoding: 'UTF-8', useRankAsPriority: true)])
         }
     }
