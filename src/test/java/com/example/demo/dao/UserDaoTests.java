@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -32,6 +33,22 @@ public class UserDaoTests {
 		for(User user: users){
 			Assert.assertEquals("name not equals!!","gaonl",user.getName());
 		}
+	}
+
+	@Test
+	public void save() {
+		User user = new User();
+		user.setName("yms");
+		user.setPassword("yms123456");
+		user.setRegisterDateTime(new Date().getTime());
+
+		User userSaved = userDao.save(user);
+		Assert.assertNotNull(userSaved.getId());
+
+
+		User userReGet = userDao.getById(userSaved.getId());
+		Assert.assertNotNull(userReGet);
+		Assert.assertEquals("username not same!!",user.getName(),"yms");
 	}
 
 }

@@ -40,6 +40,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User save(User user) {
+        if(user == null){
+            throw new NullPointerException("user is null.");
+        }
         String sql = "insert into t_user(name,password,register_date_time) values(:name,:password,:registerDateTime);";
         Map<String, Object> param = new HashMap<>();
         param.put("name", user.getName());
