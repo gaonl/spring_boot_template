@@ -127,7 +127,7 @@
                     <execution>
                         <!--
                         在maven的initialize阶段，将Jacoco的runtime agent作为VM的一个参数
-                        传给被测程序，用于监控JVM中的调用。
+                        传给被测程序，用于监控JVM中的调用。默认生成 target/jacoco.exec中
                         -->
                         <id>default-prepare-agent</id>
                         <goals>
@@ -151,11 +151,6 @@
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <systemPropertyVariables>
-                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
-                    </systemPropertyVariables>
-                </configuration>
             </plugin>
         </plugins>
     </build>

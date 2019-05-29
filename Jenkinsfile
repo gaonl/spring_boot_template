@@ -46,8 +46,8 @@ pipeline {
             steps {
                 echo "CheckStyle验证代码..............."
                 //CheckStyle是针对源码进行分析的，所以可以放在编译之前
-				//sh 'mvn checkstyle:checkstyle'
-                sh 'mvn validate'
+				sh 'mvn checkstyle:check'
+                //sh 'mvn validate'
             }
             post {
                 always {
