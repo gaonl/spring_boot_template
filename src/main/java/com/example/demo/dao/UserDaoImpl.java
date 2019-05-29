@@ -53,7 +53,7 @@ public class UserDaoImpl implements UserDao {
 
         Number number = keyHolder.getKey();
         if (number != null) {
-            user.setId(keyHolder.getKey().intValue());
+            user.setId(number.intValue());
         } else {
             user.setId(10000);
         }
