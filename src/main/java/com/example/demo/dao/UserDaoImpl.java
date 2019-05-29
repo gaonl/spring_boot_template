@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
         param.put("registerDateTime", user.getRegisterDateTime());
         KeyHolder keyHolder = new GeneratedKeyHolder();
         template.update(sql, new MapSqlParameterSource(param), keyHolder);
-        user.setId(keyHolder.getKey().intValue());
+        user.setId(keyHolder.getKey() == null ? null : keyHolder.getKey().intValue());
         return user;
     }
 
