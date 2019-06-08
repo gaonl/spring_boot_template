@@ -9,6 +9,11 @@ pipeline {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
     }
 
+    triggers {
+        //轮训版本控制器，每三分钟之内的任意时刻
+        pollSCM 'H/3 * * * *'
+    }
+
 
     /**
     * 用于设置环境变量，可以定义在stage或者pipeline部分
