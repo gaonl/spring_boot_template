@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();
             user.setId(rs.getInt("id"));
-            user.setName(rs.getString("name"));
+            user.setName(rs.getString("name1"));
             user.setPassword(rs.getString("password"));
             user.setRegisterDateTime(rs.getLong("register_date_time"));
             return user;
