@@ -11,7 +11,7 @@ pipeline {
 
     triggers {
         //轮训版本控制器，每三分钟之内的任意时刻
-        //pollSCM 'H/3 * * * *'
+        pollSCM 'H/3 * * * *'
 
         //用url触发构建
         GenericTrigger(causeString: 'My Generic Cause', genericVariables: [[defaultValue: '', key: 'key1', regexpFilter: '', value: '$.key1']], regexpFilterExpression: '', regexpFilterText: '', token: 'learn_spring_boot')
